@@ -19,23 +19,34 @@
             --transition: all 0.3s ease;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background: var(--light-bg);
+            transition: var(--transition);
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
+        /* Navigation dynamique */
         .navbar {
             background: white;
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: var(--transition);
         }
 
         .navbar .container {
@@ -51,15 +62,20 @@
             font-weight: 900;
             text-decoration: none;
             color: var(--text-color);
+            transition: var(--transition);
         }
 
         .logo span {
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .nav-links { display: flex; gap: 25px; }
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
 
         .nav-link {
             text-decoration: none;
@@ -68,35 +84,86 @@
             padding: 8px 15px;
             border-radius: 20px;
             transition: var(--transition);
+            position: relative;
         }
 
-        .nav-link:hover, .nav-link.active {
+        .nav-link.active,
+        .nav-link:hover {
             color: white;
-            background: var(--primary-color);
+            transform: translateY(-2px);
         }
 
-        /* Hero */
+        .nav-link[data-color="#4CAF50"]:hover, .nav-link.active { background: var(--primary-color); }
+        .nav-link[data-color="#2196F3"]:hover { background: var(--secondary-color); }
+
+        /* Bannière de confiance */
+        .trust-banner {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
         .hero {
-            height: 60vh;
+            height: 80vh;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            height: 100%;
             display: flex;
             align-items: center;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2069&q=80');
             background-size: cover;
             background-position: center;
-            color: white;
-            text-align: center;
         }
 
-        .hero-title { font-family: 'Montserrat', sans-serif; font-size: 48px; margin-bottom: 20px; }
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            color: white;
+            margin: 0 auto;
+        }
 
-        /* Formulaires */
-        .category-section { padding: 80px 0; }
-        .section-title { text-align: center; margin-bottom: 40px; font-family: 'Montserrat'; font-size: 32px; }
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
 
+        .btn-hero {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        /* Category Sections */
+        .category-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Styles pour les nouveaux formulaires */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-top: 40px;
         }
 
         .form-card {
@@ -106,112 +173,121 @@
             box-shadow: var(--shadow);
         }
 
-        .form-field { margin-bottom: 15px; }
-        .form-field label { display: block; margin-bottom: 5px; font-weight: 600; }
+        .form-card h3 {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-field {
+            margin-bottom: 15px;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
         .form-field input, .form-field textarea, .form-field select {
-            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
         }
 
         .btn-submit {
-            width: 100%; padding: 15px; border: none; border-radius: 8px; color: white;
-            font-weight: 600; cursor: pointer; transition: var(--transition);
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
         /* Newsletter */
         .newsletter-section {
-            background: var(--dark-bg);
+            background: linear-gradient(135deg, var(--dark-bg), #34495e);
             color: white;
-            padding: 60px 0;
+            padding: 80px 0;
         }
 
         .newsletter-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
             align-items: center;
         }
 
-        .form-group { display: flex; gap: 10px; margin-bottom: 10px; }
-        .form-group input { flex: 1; padding: 12px; border-radius: 8px; border: none; }
-        .btn-newsletter { background: var(--accent-color); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+        .form-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
 
-        .footer { background: #1a252f; color: white; padding: 30px 0; text-align: center; }
+        .form-group input {
+            flex: 1;
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        .btn-newsletter {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .newsletter-content { grid-template-columns: 1fr; }
+            .hero-title { font-size: 28px; }
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">Tech<span>Style</span>Pro</a>
+            <a href="index.html" class="logo">Tech<span>Style</span>Pro</a>
             <div class="nav-links">
-                <a href="#accueil" class="nav-link active">Accueil</a>
-                <a href="#contact-section" class="nav-link">Contact & Devis</a>
+                <a href="#accueil" class="nav-link active" data-color="#4CAF50">Accueil</a>
+                <a href="#equipements" class="nav-link" data-color="#2196F3">Équipements</a>
+                <a href="#contact-section" class="nav-link" data-color="#00BCD4">Contact & Devis</a>
             </div>
         </div>
     </nav>
 
-    <section class="hero" id="accueil">
+    <div class="trust-banner">
         <div class="container">
-            <h1 class="hero-title">TECHNOLOGIE & STYLE</h1>
-            <p>Vos équipements premium au meilleur prix.</p>
+            <span>✅ Paiement Sécurisé | 🚚 Livraison Gratuite dès 50€ | 🔄 Retour 30 jours</span>
         </div>
-    </section>
+    </div>
 
-    <section id="contact-section" class="category-section">
-        <div class="container">
-            <h2 class="section-title">Contactez-nous</h2>
-            <div class="contact-grid">
-                
-                <div class="form-card">
-                    <h3><i class="fas fa-paper-plane" style="color:var(--secondary-color)"></i> Contactez-moi</h3>
-                    <form action="https://formspree.io/f/xnjblkvn" method="POST">
-                        <input type="hidden" name="_next" value="https://votre-site.com">
-                        
-                        <div class="form-field">
-                            <label>Nom complet</label>
-                            <input type="text" name="nom_client" required>
-                        </div>
-                        <div class="form-field">
-                            <label>Votre Email</label>
-                            <input type="email" name="email_client" required>
-                        </div>
-                        <div class="form-field">
-                            <label>Message</label>
-                            <textarea name="message_client" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit" style="background:var(--secondary-color)">Envoyer le message</button>
-                    </form>
+    <section class="hero" id="accueil">
+        <div class="slide">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">TECHNOLOGIE & STYLE UNIS</h1>
+                    <p>Découvrez l'excellence des équipements réseaux et produits lifestyle premium.</p>
+                    <br>
+                    <a href="#contact-section" class="btn-hero">Demander un Devis</a>
                 </div>
-
-                <div class="form-card">
-                    <h3><i class="fas fa-file-invoice" style="color:var(--primary-color)"></i> Demander un Devis</h3>
-                    <form action="https://formspree.io/f/mykdlqjd" method="POST">
-                        <input type="hidden" name="_next" value="https://votre-site.com">
-                        
-                        <div class="form-field">
-                            <label>Service souhaité</label>
-                            <select name="service_devis">
-                                <option value="reseau">Equipement Réseau</option>
-                                <option value="mobile">Téléphonie</option>
-                                <option value="cuisine">Mixeurs & Cuisine</option>
-                            </select>
-                        </div>
-                        <div class="form-field">
-                            <label>Quantité / Détails</label>
-                            <input type="text" name="details_quantite" placeholder="Ex: 5 routeurs">
-                        </div>
-                        <div class="form-field">
-                            <label>Votre Email</label>
-                            <input type="email" name="email_client_devis" required>
-                        </div>
-                        <div class="form-field">
-                            <label>Commentaires</label>
-                            <textarea name="commentaires_devis" rows="2"></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit" style="background:var(--primary-color)">Demander mon devis</button>
-                    </form>
-                </div>
-
             </div>
         </div>
     </section>
@@ -219,24 +295,155 @@
     <section class="newsletter-section">
         <div class="container">
             <div class="newsletter-content">
-                <div>
+                <div class="newsletter-text">
                     <h2>🎯 Ne Ratez Aucune Offre !</h2>
-                    <p>Inscrivez-vous pour 10% de réduction.</p>
+                    <p>Inscrivez-vous pour bénéficier de 10% de réduction sur votre première commande.</p>
                 </div>
-                <form action="https://formspree.io/f/mykdlqdd" method="POST">
-                    <input type="hidden" name="_next" value="https://votre-site.com">
-                    <div class="form-group">
-                        <input type="email" name="email_newsletter" placeholder="Votre adresse email" required>
-                        <button type="submit" class="btn-newsletter">S'abonner</button>
-                    </div>
-                </form>
+                <div class="newsletter-form">
+                    <form action="https://formspree.io/f/xlgwakza" method="POST">
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Votre adresse email" required>
+                            <button type="submit" class="btn-newsletter">S'abonner</button>
+                        </div>
+                        <div style="display:flex; gap:10px; font-size:14px;">
+                            <input type="checkbox" required> 
+                            <span>J'accepte de recevoir des emails promotionnels.</span>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
+    <div class="max-w-2xl mx-auto">
+                    <!-- Contact Form -->
+                    <div id="contact-form" class="form-tab bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8">
+                        <h3 class="text-xl font-bold text-dark dark:text-white mb-6"><i class="fas fa-envelope text-primary mr-2"></i>Contactez-moi</h3>
+                        <form id="contactFormEl" action="https://formspree.io/f/xnjbleel" method="POST">
+                            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nom *</label>
+                                    <input type="text" name="nom" required placeholder="Votre nom"
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email *</label>
+                                    <input type="email" name="email" required placeholder="votre@email.com"
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Sujet *</label>
+                                <input type="text" name="sujet" required placeholder="Sujet de votre message"
+                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message *</label>
+                                <textarea name="message" required rows="5" placeholder="Votre message..."
+                                          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
+                            </div>
+                            <button type="submit"
+                                    class="w-full bg-primary hover:bg-secondary text-white py-3 rounded-lg font-semibold transition transform hover:-translate-y-1">
+                                Envoyer <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                            <div id="contactFormMsg" class="mt-4 hidden text-center font-medium rounded-lg py-3 px-4"></div>
+                        </form>
+                    </div>
 
+                    <!-- Devis Form -->
+                    <div id="devis-form" class="form-tab hidden bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8">
+                        <h3 class="text-xl font-bold text-dark dark:text-white mb-6"><i class="fas fa-file-invoice text-primary mr-2"></i>Devis</h3>
+                        <form id="devisFormEl" action="https://formspree.io/f/xpqjkvvd" method="POST">
+                            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nom *</label>
+                                    <input type="text" name="nom" required placeholder="Votre nom"
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email *</label>
+                                    <input type="email" name="email" required placeholder="votre@email.com"
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Téléphone</label>
+                                <input type="tel" name="telephone" placeholder="+228 91095198"
+                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Type de produit *</label>
+                                <select name="type_produit" required
+                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option value="">-- Sélectionnez --</option>
+                                    <option value="PC Gaming">PC Gaming</option>
+                                    <option value="Composants">Composants</option>
+                                    <option value="Accessoires">Accessoires</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description de votre besoin *</label>
+                                <textarea name="description" required rows="4" placeholder="Décrivez votre projet..."
+                                          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
+                            </div>
+                            <button type="submit"
+                                    class="w-full bg-primary hover:bg-secondary text-white py-3 rounded-lg font-semibold transition transform hover:-translate-y-1">
+                                Demander un devis <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                            <div id="devisFormMsg" class="mt-4 hidden text-center font-medium rounded-lg py-3 px-4"></div>
+                        </form>
+                    </div>
+
+                    <!-- Inscription Form -->
+                    <div id="inscription-form" class="form-tab hidden bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8">
+                        <h3 class="text-xl font-bold text-dark dark:text-white mb-6"><i class="fas fa-user-plus text-primary mr-2"></i>Inscrivez-vous ici</h3>
+                        <form id="inscriptionFormEl" action="https://formspree.io/f/xvzbdeeq" method="POST">
+                            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Prénom *</label>
+                                    <input type="text" name="prenom" required placeholder="Votre prénom"
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nom *</label>
+                                    <input type="text" name="nom" required placeholder="Votre nom"
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email *</label>
+                                <input type="email" name="email" required placeholder="votre@email.com"
+                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Téléphone</label>
+                                <input type="tel" name="telephone" placeholder="+228 91095198"
+                                       class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div class="mb-6">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" name="accepte_conditions" required
+                                           class="mt-1 w-4 h-4 text-primary rounded border-gray-300 focus:ring-primary">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">J'accepte les conditions d'utilisation et la politique de confidentialité *</span>
+                                </label>
+                            </div>
+                            <button type="submit"
+                                    class="w-full bg-primary hover:bg-secondary text-white py-3 rounded-lg font-semibold transition transform hover:-translate-y-1">
+                                S'inscrire <i class="fas fa-user-check ml-2"></i>
+                            </button>
+                            <div id="inscriptionFormMsg" class="mt-4 hidden text-center font-medium rounded-lg py-3 px-4"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 TechStyle Pro. Tous droits réservés.</p>
+            <p style="font-size: 14px; opacity: 0.6; margin-top: 10px;">Formulaires sécurisés par Formspree</p>
         </div>
     </footer>
 
